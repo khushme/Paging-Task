@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:paging_master/common_widgets/text_widget.dart';
 import 'package:paging_master/constants/colors.dart';
 import 'package:paging_master/controllers/main_screen_controller.dart';
 
@@ -62,15 +63,14 @@ class MainScreenTile extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("${mainScreenController.tasks.value.data[index].firstName} ${mainScreenController.tasks.value.data[index].lastName}",
-                    style: TextStyle(
-                      color: AppColors.black,
-                    )),
+                TextWidget(
+                label: "${mainScreenController.tasks.value.data[index].firstName} ${mainScreenController.tasks.value.data[index].lastName}",
+                   fontSize: 14),
                 SizedBox(height: 10.0),
-                Text(mainScreenController.tasks.value.data[index].email,
-                    style: TextStyle(
-                      color: AppColors.black,
-                    ))
+                TextWidget(
+                    label: mainScreenController.tasks.value.data[index].email,
+                    fontSize: 14)
+
               ],
             )
           ],

@@ -39,6 +39,12 @@ android {
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        // Enabling multidex support.
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary true
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
     }
 
     buildTypes {

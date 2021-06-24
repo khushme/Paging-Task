@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:paging_master/data/adapters/task_adapter.dart';
 import 'package:paging_master/data/model/task_model.dart';
+import 'package:paging_master/utilities/universalfunctions.dart';
 
 
 
@@ -29,9 +30,24 @@ class MainScreenController extends GetxController {
     fetchList();
   }
 
-
+//fetch list data from pages
   fetchList() async{
-    //fetch list data from pages
+    bool gotInternetConnection = await hasInternetConnection(
+      context: Get.overlayContext,
+      canShowAlert: true,
+      onFail: () {
+        loading.value = false;
+        bottomLoading.value=false;
+      },
+      onSuccess: () {},
+    );
+
+    if (!gotInternetConnection) {
+      loading.value = false;
+      bottomLoading.value=false;
+      return;
+    }
+
     tasks.value = await taskAdapter.loadTasks(page: page.toString());
     dataList.addAll(tasks.value.data);
     tasks.value.data=dataList;

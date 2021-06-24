@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paging_master/common_widgets/progressbar.dart';
+import 'package:paging_master/common_widgets/text_widget.dart';
 import 'package:paging_master/constants/colors.dart';
 import 'package:paging_master/constants/strings/strings.dart';
 import 'package:paging_master/controllers/main_screen_controller.dart';
@@ -57,20 +58,16 @@ class _MainScreenState extends State<MainScreen> {
             ? Center(
                 child: CircularProgressIndicator(),
               )
-            : Container(
+            : mainScreenController.tasks.value!=null?Container(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                     Container(
                       color: AppColors.white,
                       padding: EdgeInsets.all(10.0),
-                      child: Text(
-                          StringConstants.itemCount +
-                              mainScreenController.tasks.value.data.length
-                                  .toString(),
-                          style: TextStyle(
-                            color: AppColors.black,
-                          )),
+                      child: TextWidget(
+                            label: StringConstants.itemCount + mainScreenController.tasks.value.data.length.toString(),
+                            fontSize: 14),
                     ),
                     Expanded(
                         child: ListView.builder(
@@ -83,6 +80,6 @@ class _MainScreenState extends State<MainScreen> {
                     mainScreenController.bottomLoading.value
                         ? pagingLoader()
                         : Container()
-                  ]))));
+                  ])):Container()));
   }
 }
