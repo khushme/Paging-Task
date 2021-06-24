@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.stores.paging_master">
+
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="Page Task"
         android:icon="@mipmap/ic_launcher">

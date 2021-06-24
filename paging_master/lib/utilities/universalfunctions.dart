@@ -9,6 +9,7 @@ import 'package:paging_master/constants/strings/strings.dart';
 
 bool alertAlreadyActive = false;
 
+// Check internet connection availability
 Future<bool> hasInternetConnection({
   @required BuildContext context,
   @required Function onSuccess,
